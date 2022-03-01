@@ -36,7 +36,7 @@ function generateObjects(){
         isLiquid:false,
         isSlippery:false
     }))
-    walkableCollidersArray.push(new WalkableCollider(80+300+200+100,canvas.height-190,canvas.width-80-300-200,10,'blue',{
+    walkableCollidersArray.push(new WalkableCollider(80+300+200+100,canvas.height-200,canvas.width-80-300-200,20,'blue',{
         isGround:true,
         isClimbable:false,
         isLiquid:false,

@@ -149,7 +149,7 @@ function performWalk(){
       }
     }
   }
-  subStates.swimDelay = 0.2;
+  subStates.swimDelay = 0.22;
   applyForces(gravity,player.xVelocity,player.yVelocity,xFriction,yFriction);
 }
 //climb
@@ -185,7 +185,7 @@ function performClimb(){
   }
   subStates.coyoteWall = 0.1;
   subStates.coyoteGround = 0;
-  subStates.swimDelay = 0.2;
+  subStates.swimDelay = 0.22;
   applyForces(gravity,player.xVelocity,player.yVelocity,xFriction,yFriction);
 }
 //swim
@@ -193,7 +193,7 @@ function performSwim(){
   var xFriction = 0.8;
   var yFriction = 0.8;
   var velocity = 0.4;
-  var gravity = 0.2;
+  var gravity = 0.1;
   if(controller.shift){
     velocity = 0.6
   }
@@ -208,13 +208,13 @@ function performSwim(){
     if(subStates.collisionDirection.top && player.yVelocity < 0){
       player.yVelocity = 0
       if(controller.jump && subStates.jumped == false){
-        player.yVelocity -= 10;
+        player.yVelocity -= 13;
       }
     }
   }
   if(controller.down){
     player.yVelocity += velocity;
-    gravity = -0.2;
+    gravity = -0.1;
   }
   subStates.coyoteGround = 0;
   subStates.coyoteWall = 0;
@@ -292,6 +292,9 @@ function narrowPhase(obj) {
   }
   if(obj.tag.isLiquid == true){
     if(player.y + (player.height/2) <= obj.y){
+      if(player.y + (player.height/2)+1 <= obj.y){
+        subStates.swimDelay = 0.01;
+      }
       subStates.collisionDirection.top = true;
     }
   }

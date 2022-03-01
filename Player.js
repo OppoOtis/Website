@@ -17,6 +17,7 @@ class Player{
     }
 
     update(){
+        
         playerPhysics()
         subStates.colliding = false;
         subStates.collisionDirection.top = false;
@@ -32,7 +33,6 @@ class Player{
           collisionDetection(walkableCollidersArray[i])
         }
         checkMovementType()
-        console.log();
     }
 }
 
@@ -65,7 +65,7 @@ var subStates = {
 }
 
 function playerPhysics(){
-  if(controller.jump == false){
+  if(controller.jump == false && (subStates.onGround || subStates.climbing || subStates.swimming)){
     subStates.jumped = false;
   }
   if(subStates.swimming){
@@ -225,11 +225,11 @@ function performSwim(){
 //applies forces
 function applyForces(gravity,xVelocity,yVelocity,xFriction,yFriction){
   //put gravity on player
-  player.yVelocity += gravity;
+  player.yVelocity += gravity * deltaTime*120;
 
   //put velocity on player
-  player.x += xVelocity;
-  player.y += yVelocity;
+  player.x += xVelocity * deltaTime*120;
+  player.y += yVelocity * deltaTime*120;
 
   //put friction friction
   player.xVelocity *= xFriction;

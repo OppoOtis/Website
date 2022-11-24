@@ -33,7 +33,6 @@ class Player{
           collisionDetection(walkableCollidersArray[i])
         }
         checkMovementType()
-        console.log(subStates.onGround)
     }
 }
 

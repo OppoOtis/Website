@@ -33,6 +33,7 @@ class Player{
           collisionDetection(walkableCollidersArray[i])
         }
         checkMovementType()
+        console.log(subStates.onGround)
     }
 }
 
@@ -65,7 +66,7 @@ var subStates = {
 }
 
 function playerPhysics(){
-  if(controller.jump == false && (subStates.onGround || subStates.climbing || subStates.swimming)){
+  if(subStates.swimming || (controller.jump == false && (subStates.climbing || subStates.onGround))){
     subStates.jumped = false;
   }
   if(subStates.swimming){
@@ -199,22 +200,46 @@ function performSwim(){
   }
   if(controller.right){
     player.xVelocity += velocity;
+    gravity = 0
+    if(controller.left){
+        gravity = 0.1
+    }
   }
   if(controller.left){
     player.xVelocity -= velocity;
-  }
-  if(controller.up && subStates.swimDelay <= 0){
-    player.yVelocity -= velocity;
-    if(subStates.collisionDirection.top && player.yVelocity < 0){
-      player.yVelocity = 0
-      if(controller.jump && subStates.jumped == false){
-        player.yVelocity -= 13;
-      }
+    gravity = 0
+    if(controller.right){
+        gravity = 0.1
     }
   }
-  if(controller.down){
+  if(controller.up){
+    if(subStates.swimDelay <= 0){
+      player.yVelocity -= velocity;
+    }
+    
+    if(subStates.collisionDirection.top && player.yVelocity < 0){
+      player.yVelocity = 0
+    }
+    if(controller.down){
+        gravity = 0.1
+    }
+  }
+  if(controller.down && controller.jump == false){
     player.yVelocity += velocity;
-    gravity = -0.1;
+    gravity = 0;
+    if(controller.up){
+        gravity = 0.1
+    }
+  }
+  if(controller.jump){
+    player.yVelocity -= velocity
+    if(subStates.collisionDirection.top && player.yVelocity < 0){
+      player.yVelocity = 0
+      player.yVelocity -= 10
+    }
+  }
+  if(subStates.collisionDirection.top){
+    gravity = 0.1
   }
   subStates.coyoteGround = 0;
   subStates.coyoteWall = 0;

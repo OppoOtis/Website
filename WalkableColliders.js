@@ -18,6 +18,7 @@ class WalkableCollider{
 
 //obstacles
 function generateObjects(){
+
     walkableCollidersArray.push(new WalkableCollider(0,canvas.height-400,80,400,'gray',{
         isGround:true,
         isClimbable:true,
@@ -36,7 +37,7 @@ function generateObjects(){
         isLiquid:false,
         isSlippery:false
     }))
-    walkableCollidersArray.push(new WalkableCollider(80+300+200+100,canvas.height-200,canvas.width-80-300-200,20,'blue',{
+    walkableCollidersArray.push(new WalkableCollider(80+300+200+400,canvas.height-200,canvas.width-80-300-200,20,'blue',{
         isGround:true,
         isClimbable:false,
         isLiquid:false,
@@ -60,6 +61,25 @@ function generateObjects(){
         isClimbable:false,
         isLiquid:false,
         isSlippery:false,
+    }))
+    
+    walkableCollidersArray.push(new WalkableCollider(0,canvas.height/2,canvas.width,canvas.height/2,"rgba(0,5,255,0.5)",{
+        isGround:false,
+        isClimbable:false,
+        isLiquid:true,
+        isSlippery:false
+    }))
+    walkableCollidersArray.push(new WalkableCollider(0,-5+canvas.height/2,canvas.width/3,10,"rgba(0,0,0,1)",{
+        isGround:true,
+        isClimbable:false,
+        isLiquid:false,
+        isSlippery:true
+    }))
+    walkableCollidersArray.push(new WalkableCollider(canvas.width-100,150,100,canvas.height-150,"rgba(0.1,0.1,0.1,1)",{
+        isGround:true,
+        isClimbable:true,
+        isLiquid:false,
+        isSlippery:false
     }))
     */
 }

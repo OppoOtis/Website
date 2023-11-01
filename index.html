@@ -1,12 +1,22 @@
-<style>
-    body{
-        margin: 0;
-    }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
 
-<canvas></canvas>
-<script src="Time.js"></script>
-<script src="Input.js"></script>
-<script src="WalkableColliders.js"></script>
-<script src="Player.js"></script>
-<script src="Main.js"></script>
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="solarSystem"></canvas>
+    <script type="module" src="solarSystem.js"></script>
+</body>
+</html>

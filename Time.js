@@ -3,7 +3,7 @@ var lastFrameTimeStamp = new Date().getTime();
 var deltaTime = null;
 
 function updateDeltaTime(){
-    deltaTime = (new Date().getTime() - lastFrameTimeStamp)/1000;
-    console.log(deltaTime)
+    deltaTime = (new Date().getTime() - lastFrameTimeStamp);
+    console.log(new Date().getTime())
     lastFrameTimeStamp = new Date().getTime();
 }

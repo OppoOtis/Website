@@ -249,11 +249,11 @@ function performSwim(){
 //applies forces
 function applyForces(gravity,xVelocity,yVelocity,xFriction,yFriction){
   //put gravity on player
-  player.yVelocity += gravity * deltaTime*120;
+  player.yVelocity += gravity * deltaTime/8;
 
   //put velocity on player
-  player.x += xVelocity * deltaTime*120;
-  player.y += yVelocity * deltaTime*120;
+  player.x += xVelocity * deltaTime/8;
+  player.y += yVelocity * deltaTime/8;
 
   //put friction friction
   player.xVelocity *= xFriction;
